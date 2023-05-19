@@ -1,0 +1,28 @@
+//movieForm as sfc
+import React from "react";
+import Form from "./common/form";
+import { useNavigate, useParams } from "react-router-dom";
+
+class MovieFormR extends Form {
+  state = {};
+
+  render() {
+    const navigate = this.props.navigate;
+    return (
+      <div>
+        <h1>MovieForm {this.props.id}</h1>
+        <button className="btn btn-primary" onClick={() => navigate("/movies")}>
+          Save
+        </button>
+      </div>
+    );
+  }
+}
+
+export function MovieForm(props) {
+  const navigate = useNavigate();
+  const params = useParams().id;
+  return <MovieFormR navigate={navigate} id={params}></MovieFormR>;
+}
+
+export default MovieForm;
